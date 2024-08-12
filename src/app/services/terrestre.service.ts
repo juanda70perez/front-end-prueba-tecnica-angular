@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TerrestreService {
-  private apiUrl = environment.urlApi+'/envios-terrestres';
+  private apiUrl = environment.urlApi+'envios-terrestres';
 
   constructor(private http: HttpClient) {}
 
