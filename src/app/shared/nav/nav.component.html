@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active text-white" routerLink="/clientes">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" routerLink="/bodegas">Bodegas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" routerLink="/puertos">Puertos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" routerLink="/envios-maritimos">Envios Maritimos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" routerLink="/envios-terrestres">Envios Terrestres</a>
+        </li>
+      </ul>
+
+    </div>
+    <ul class="navbar-nav">
+      <li *ngIf="userLoginOn" class="nav-item">
+        <tr></tr>
+        <app-personal-details></app-personal-details>
+      </li>
+
+      <li *ngIf="!userLoginOn" class="nav-item">
+
+        <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#loginModal">
+
+          <i class="fa fa-user-o text-white fa-lg" aria-hidden="true"></i>
+        </a>
+
+      </li>
+      <li *ngIf="userLoginOn" class="nav-item">
+
+        <a class="nav-link text-white" (click)="logout()" routerLink="/inicio">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<app-login></app-login>

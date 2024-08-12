@@ -1,0 +1,4 @@
+<p *ngIf="errorMessage.length!=0" class="text-danger">{{errorMessage}}</p>
+<div *ngIf="(userLoginOn && !editMode) || !userLoginOn">
+    <a class="nav-link text-white"><b> Nombre: </b> {{user?.firstname}} </a>
+</div>

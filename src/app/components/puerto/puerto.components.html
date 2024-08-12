@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="container mt-5">
+    <h2 class="mb-4">Agregar Nueva Puerto</h2>
+    <form (ngSubmit)="addPuerto()" #puertoForm="ngForm" class="border p-4 rounded">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="puerto.nombre" class="form-control" placeholder="Nombre del puerto" required>
+      </div>
+      <div class="mb-3">
+        <label for="ubicacion" class="form-label">Ubicación</label>
+        <input type="text" name="ubicacion" [(ngModel)]="puerto.ubicacion" class="form-control" placeholder="Ubicación del puerto" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar Puerto</button>
+    </form>
+    <h2 class="mb-4">Lista de Puertos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let puerto of puertos">
+          <td>{{ puerto.nombre }}</td>
+          <td>{{ puerto.ubicacion }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deletePuerto(puerto.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,35 @@
+<app-nav></app-nav>
+<div class="container mt-5">
+    <h2 class="mb-4">Agregar Nueva Bodega</h2>
+    <form (ngSubmit)="addBodega()" #bodegaForm="ngForm" class="border p-4 rounded">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="newBodega.nombre" class="form-control" placeholder="Nombre de la Bodega" required>
+      </div>
+      <div class="mb-3">
+        <label for="ubicacion" class="form-label">Ubicación</label>
+        <input type="text" name="ubicacion" [(ngModel)]="newBodega.ubicacion" class="form-control" placeholder="Ubicación de la Bodega" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar Bodega</button>
+    </form>
+    
+    <h2 class="mb-4">Lista de Bodegas</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bodega of bodegas">
+          <td>{{ bodega.nombre }}</td>
+          <td>{{ bodega.ubicacion }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteBodega(bodega.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

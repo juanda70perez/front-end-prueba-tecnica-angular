@@ -1,0 +1,66 @@
+<app-nav></app-nav>
+
+<div class="d-flex justify-content-center align-items-center ">
+    <h2 class="text-primary fw-bold">Clientes</h2>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteCliente(cliente.id!)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center align-items-center ">
+    <h2 class="text-primary fw-bold"> Lista de Bodegas</h2>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let bodega of bodegas">
+            <td>{{ bodega.nombre }}</td>
+            <td>{{ bodega.ubicacion }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteBodega(bodega.id!)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="d-flex justify-content-center align-items-center ">
+    <h2 class="text-primary fw-bold"> Lista de Puertos</h2>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let puerto of puertos">
+            <td>{{ puerto.nombre }}</td>
+            <td>{{ puerto.ubicacion }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deletePuerto(puerto.id!)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

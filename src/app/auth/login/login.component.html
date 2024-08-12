@@ -1,0 +1,42 @@
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal"  tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="loginForm">
+            <p class="text-danger">{{loginError}}</p>
+            <div class="mb-3">
+              <label for="Username" class="form-label">Username</label>
+              <input formControlName="username" type="username" class="form-control" id="Username">  
+              <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                  class="text-danger">
+                  <div *ngIf="username.errors?.['required']">
+                      El username es requerido.
+                  </div>
+                  <div *ngIf="username.errors?.['username']">
+                      El username debe tener un formato válido.
+                  </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                  class="text-danger">
+                  <div *ngIf="password.errors?.['required']">
+                      El Password es requerido.
+                  </div>
+              </div> 
+            </div>
+            <button type="submit" (click)="login()" class="btn btn-primary m-2">Iniciar Sesión</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

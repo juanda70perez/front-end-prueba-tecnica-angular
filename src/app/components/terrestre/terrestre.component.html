@@ -1,0 +1,77 @@
+<app-nav></app-nav>
+<div class="container mt-5">
+  <h2 class="mb-4">Envíos Terrestres</h2>
+  <form (ngSubmit)="addEnvio(envioForm.value)" #envioForm="ngForm" class="border p-4 rounded">
+    <div class="mb-3">
+      <label for="tipoProducto" class="form-label">Tipo de Producto</label>
+      <input type="text" name="tipoProducto" ngModel class="form-control" placeholder="Tipo de Producto" required>
+    </div>
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad</label>
+      <input type="number" name="cantidad" ngModel class="form-control" placeholder="Cantidad" required>
+    </div>
+    <div class="mb-3">
+      <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+      <input type="date" name="fechaRegistro" ngModel class="form-control" placeholder="Fecha de Registro" required>
+    </div>
+    <div class="mb-3">
+      <label for="fechaEntrega" class="form-label">Fecha de Entrega</label>
+      <input type="date" name="fechaEntrega" ngModel class="form-control" placeholder="Fecha de Entrega" required>
+    </div>
+    <div class="mb-3">
+      <label for="bodegaEntrega" class="form-label">Bodega de Entrega</label>
+      <select name="bodegaEntrega" ngModel class="form-select" required>
+        <option *ngFor="let bodega of bodegas" [value]="bodega.id">{{ bodega.nombre }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="cliente" class="form-label">Cliente</label>
+      <select name="cliente" ngModel class="form-select" required>
+        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="precioEnvio" class="form-label">Precio de Envío</label>
+      <input type="number" name="precioEnvio" ngModel class="form-control" placeholder="Precio de Envío" required>
+    </div>
+    <div class="mb-3">
+      <label for="placaVehiculo" class="form-label">Placa del Vehículo</label>
+      <input type="text" name="placaVehiculo" ngModel class="form-control" placeholder="Placa del Vehículo" required>
+    </div>
+    <div class="mb-3">
+      <label for="numeroGuia" class="form-label">Número de Guía</label>
+      <input type="text" name="numeroGuia" ngModel class="form-control" placeholder="Número de Guía" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Envío</button>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tipo de Producto</th>
+        <th>Cantidad</th>
+        <th>Fecha de Registro</th>
+        <th>Fecha de Entrega</th>
+        <th>Puerto de Entrega</th>
+        <th>Precio de Envío</th>
+        <th>Número de Flota</th>
+        <th>Número de Guía</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let envio of envios">
+        <td>{{ envio.tipoProducto }}</td>
+        <td>{{ envio.cantidad }}</td>
+        <td>{{ envio.fechaRegistro | date }}</td>
+        <td>{{ envio.fechaEntrega | date }}</td>
+        <td>{{ envio.bodegaEntrega.nombre }}</td>
+        <td>{{ envio.precioEnvio }}</td>
+        <td>{{ envio.placaVehiculo }}</td>
+        <td>{{ envio.numeroGuia }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteEnvio(envio.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
